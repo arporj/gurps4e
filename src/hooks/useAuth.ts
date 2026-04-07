@@ -1,3 +1,4 @@
+import { MOCK_PROFILE } from '@/lib/mocks'
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { getCurrentProfile } from '@/lib/auth'
@@ -23,7 +24,6 @@ export function useAuth() {
     // Check for mock session first
     const mockSession = localStorage.getItem('mock_session') === 'true'
     if (mockSession) {
-      const { MOCK_PROFILE } = require('@/lib/mocks')
       setState({
         session: { access_token: 'mock', user: { id: 'mock-user-id' } } as any,
         profile: MOCK_PROFILE,
